@@ -3,11 +3,11 @@ import './musiclistitem.less';
 import Pubsub from 'pubsub-js';
 
 let MusicListItem = React.createClass({
-    deleteMusic (musicItem) {
+    deleteMusic (musicItem, e) {
+        e.stopPropagation();
         PubSub.publish('DELETE_MUSIC', musicItem);
     },
-    playMusic (musicItem, e) {
-        e.stopPropagation();
+    playMusic (musicItem) {
         PubSub.publish('PLAY_MUSIC', musicItem);
     },
     render () {
