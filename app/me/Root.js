@@ -2,7 +2,7 @@ import React from 'react';
 import Header from './components/header';
 import Player from './pages/player';
 import MusicList from './pages/musiclist';
-import { MUSIC_LIST } from './config/musiclist';
+import { MUSIC_LIST, TIMELINE } from './config/musiclist';
 import { Router, IndexRoute, Link, Route, hashHistory } from 'react-router';
 import Pubsub from 'pubsub-js';
 
@@ -10,9 +10,9 @@ let App = React.createClass({
     getInitialState () {
         return {
             musicList: MUSIC_LIST,
-            currentMusicItem: MUSIC_LIST['now'].data[0],
+            currentMusicItem: MUSIC_LIST[TIMELINE].data[0],
             repeatType: 'cycle',
-            timeline: 'now' // 正在播放的是那个时代的歌曲：past, now, furture
+            timeline: TIMELINE // 正在播放的是那个时代的歌曲：past, now, furture
         }
     },
     playMusic (musicItem) {

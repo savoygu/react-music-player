@@ -3,6 +3,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     // The entry file. All your app roots fromn here.
@@ -39,7 +40,15 @@ module.exports = {
         // plugin for passing in data to the js, like what NODE_ENV we are in.
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify('production')
-        })
+        }),
+        // copy custom static assets
+        new CopyWebpackPlugin([
+            {
+                from: path.resolve(__dirname, './static'),
+                to: 'static',
+                ignore: ['.*']
+            }
+        ])
     ],
 
     module: {

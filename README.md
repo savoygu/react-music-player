@@ -1,9 +1,14 @@
 # react-music-player
 music player build with React
 
+### 改进
+
+- npm run build 之后 static 文件夹没有被复制到 dist 文件夹的问题
+- 支持三种时间线的歌单（告别过去、珍惜当下、拥抱未来）
+
 ### overview
-![](https://github.com/xiaolin3303/react-music-player/blob/master/overview/music-player.png?raw=true)
-![](https://github.com/xiaolin3303/react-music-player/blob/master/overview/music-list.png?raw=true)
+![](overview/music-player.png)
+![](overview/music-list-change.png)
 
 ### 如何运行
 
@@ -27,6 +32,6 @@ entry: [
     'webpack-dev-server/client?http://localhost:3000',
     'webpack/hot/only-dev-server',
     'react-hot-loader/patch',
-    path.join(__dirname, 'app/router/index.js')
+    path.join(__dirname, 'app/me/index.js')
 ],
 ```
