@@ -12,9 +12,9 @@ module.exports = {
     ],
     // Where you want the output to go
     output: {
-        path: path.join(__dirname, '/dist/'),
+        path: process.env.ENV === 'gh-pages' ? path.join(__dirname, '/gh-pages/') : path.join(__dirname, '/dist/'),
         filename: '[name]-[hash].min.js',
-        publicPath: '/'
+        publicPath: process.env.ENV === 'gh-pages' ? '/react-music-player/' : '/'
     },
     plugins: [
         // webpack gives your modules and chunks ids to identify them. Webpack can vary the
@@ -28,7 +28,8 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: './app/index.tpl.html',
             inject: 'body',
-            filename: './index.html'
+            filename: './index.html',
+            publicPath: process.env.ENV === 'gh-pages' ? '/react-music-player' : ''
         }),
         // handles uglifying js
         new webpack.optimize.UglifyJsPlugin({
